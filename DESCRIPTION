@@ -1,7 +1,7 @@
 Package: vogelR
 Type: Package
 Title: My personal package with all my selfmade functions
-Version: 0.1.0
+Version: 0.1.1
 Author: Dominik Vogel
 Maintainer: Dominik Vogel <dominik.vogel@wiso.uni-hamburg.de>
 Description: Many useful things
@@ -10,4 +10,7 @@ Encoding: UTF-8
 LazyData: true
 Imports:
   broman,
-  ArgumentCheck
+  ArgumentCheck,
+  stringi
+Suggests:
+  installr
