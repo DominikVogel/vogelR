@@ -1,44 +1,19 @@
 \name{extract_hlm}
 \alias{extract_hlm}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-Extract parameters from nlme::lme-models
-}
-\description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-Function extracts coefficients and p-values from nlme::lme-models
-}
-\usage{
-extract_hlm(model, var, parameter)
-}
-%- maybe also 'usage' for other objects documented here.
+\title{Extract parameters from nlme::lme-models}
+\description{Function extracts coefficients and p-values from nlme::lme-models}
+\usage{extract_hlm(model, var, parameter)}
 \arguments{
-  \item{model}{
-%%     ~~Describe \code{x} here~~
-    The nlme:lme-model (must be build in advance)
-    }
+  \item{model}{The nlme::lme-model (must be build in advance)}
   \item{var}{Name of Variable for with parameter should be extracted}
   \item{paramter}{"b" = coefficient, "p" = p-value}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
-\value{
-returns "b = ..." or "p = ..."
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-Dominik Vogel
-}
+\value{returns "b = ..." or "p = ..."}
+\references{}
+\author{Dominik Vogel}
 \note{
 %%  ~~further notes~~
 }
