@@ -1,11 +1,34 @@
 # Functions to extract values from models or other packages' reuslts
 
 # nlme::lme
-extract_hlm <- function(model, var, parameter = c("p", "b")) {
-  if (!requireNamespace("broman", quietly = TRUE)) {
-    stop("Pkg needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
+extract_hlm <- function(model, var, parameter) {
+  #* Establish a new 'ArgCheck' object
+  Check <- ArgumentCheck::newArgCheck()
+
+  #* Add an error if parameter is not p or b
+  if (parameter != "p" & parameter != "b")
+    ArgumentCheck::addError(
+      msg = "You can only extract coefficients and p-values. Use 'b' or 'p'",
+      argcheck = Check
+    )
+
+  #* Add an error if broman is not installed
+  if (!requireNamespace("broman", quietly = TRUE))
+    ArgumentCheck::addError(
+      msg = "package 'broman' is needed for this function. Please install it",
+      argcheck = Check
+    )
+
+  #* Add an error if ArgumentCheck is not installed
+  if (!requireNamespace("ArgumentCheck", quietly = TRUE))
+    ArgumentCheck::addError(
+      msg = "package 'ArgumentCheck' is needed for this function. Please install it",
+      argcheck = Check
+    )
+
+  #* Return errors and warnings (if any)
+  ArgumentCheck::finishArgCheck(Check)
+
   sum_model <- summary(model)
   ifelse(parameter == "p",
          ifelse(sum_model[["tTable"]][var, 5] >= 0.001,
@@ -26,11 +49,34 @@ extract_hlm <- function(model, var, parameter = c("p", "b")) {
 
 
 # stats::lme
-extract_lm <- function(model, var, parameter = c("p", "b")) {
-  if (!requireNamespace("broman", quietly = TRUE)) {
-    stop("Pkg needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
+extract_lm <- function(model, var, parameter) {
+  #* Establish a new 'ArgCheck' object
+  Check <- ArgumentCheck::newArgCheck()
+
+  #* Add an error if parameter is not p or b
+  if (parameter != "p" & parameter != "b")
+    ArgumentCheck::addError(
+      msg = "You can only extract coefficients and p-values. Use 'b' or 'p'",
+      argcheck = Check
+    )
+
+  #* Add an error if broman is not installed
+  if (!requireNamespace("broman", quietly = TRUE))
+    ArgumentCheck::addError(
+      msg = "package 'broman' is needed for this function. Please install it",
+      argcheck = Check
+    )
+
+  #* Add an error if ArgumentCheck is not installed
+  if (!requireNamespace("ArgumentCheck", quietly = TRUE))
+    ArgumentCheck::addError(
+      msg = "package 'ArgumentCheck' is needed for this function. Please install it",
+      argcheck = Check
+    )
+
+  #* Return errors and warnings (if any)
+  ArgumentCheck::finishArgCheck(Check)
+
   sum_model <- summary(model)
   ifelse(parameter == "p",
          ifelse(sum_model[["coefficients"]][var,4] >= 0.001,
