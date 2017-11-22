@@ -1,8 +1,6 @@
-# Function to extract coefficients and p-values from lme
-# Arguments:
-# model: lme model. Musst exist in advance
-# var: Name of Variable for with parameter should be extracted
-# parameter: "b" = coefficient, "p" = p-value
+# Functions to extract values from models or other packages' reuslts
+
+# nlme::lme
 extract_hlm <- function(model, var, parameter = c("p", "b")) {
   if (!requireNamespace("broman", quietly = TRUE)) {
     stop("Pkg needed for this function to work. Please install it.",
@@ -27,25 +25,22 @@ extract_hlm <- function(model, var, parameter = c("p", "b")) {
 
 
 
-
-# Function to extract coefficients and p-values from lm
-# Arguments:
-# model: lm model. Musst exist in advance
-# var: Name of Variable for with parameter should be extracted
-# parameter: "b" = coefficient, "p" = p-value
+# stats::lme
 extract_lm <- function(model, var, parameter = c("p", "b")) {
-  require(broman)
-  require(stats)
+  if (!requireNamespace("broman", quietly = TRUE)) {
+    stop("Pkg needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
   sum_model <- summary(model)
   ifelse(parameter == "p",
          ifelse(sum_model[["coefficients"]][var,4] >= 0.001,
                 out <- paste0("p = ",
-                              myround(sum_model[["coefficients"]][var,4],
+                              broman::myround(sum_model[["coefficients"]][var,4],
                                       digits = 3)),
                 out <- "p < 0.001"),
          ifelse(parameter == "b",
                 out <- paste0("b = ",
-                              myround(sum_model[["coefficients"]][[var,1]],
+                              broman::myround(sum_model[["coefficients"]][[var,1]],
                                       digits = 2)),
                 NULL)
   )
