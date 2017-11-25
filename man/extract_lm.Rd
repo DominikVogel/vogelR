@@ -5,7 +5,7 @@
 \usage{extract_lm(model, var, parameter)}
 \arguments{
   \item{model}{The stats::lm-model (must be build in advance)}
-  \item{var}{Name of Variable for with parameter should be extracted}
+  \item{var}{Name of Variable for with parameter should be extracted. Put in "".}
   \item{paramter}{"b" = coefficient, "p" = p-value}
 }
 \details{
