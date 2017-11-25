@@ -39,9 +39,25 @@ t_results <- function(x, y, alternative = "two.sided",
 }
 
 
-set.seed(1)
-df <- data.frame(happy = c(rnorm(n = 10, mean = 3, sd = 0.5), rnorm(n = 10, mean = 4, sd = 0.5)),
-                 treatment = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                               1, 1, 1, 1, 1, 1, 1, 1, 1, 1))
 
-t_results(y = df$happy, x = df$treatment)
+
+
+# ANOVA
+anova_results <- function(y, x) {
+  devtools::use_package("stats")
+  devtools::use_package("broman")
+  anova <- stats::aov(y ~ x)
+  anova_result <- summary(anova)
+  p <- ifelse(anova_result[[1]][["Pr(>F)"]][1] >= 0.001,
+              paste0("p = ",
+                     broman::myround(anova_result[[1]][["Pr(>F)"]][1], 2)),
+              "p < 0.001")
+  result <- paste0("F(",
+                   as.integer(anova_result[[1]][["Df"]][1]),
+                   ",",
+                   as.integer(anova_result[[1]][["Df"]][2]),
+                   ") = ",
+                   broman::myround(anova_result[[1]][["F value"]][1], 2),
+                   "; ", p)
+  return(result)
+}
