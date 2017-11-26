@@ -1,6 +1,22 @@
 # Functions to extract values from models or other packages' reuslts
 
-# nlme::lme
+#' Extract parameters from nlme::lme-models
+#'
+#' @description Function extracts coefficients and p-values from nlme::lme-models
+#'
+#' @param model The nlme::lme-model (must be build in advance)
+#' @param var Name of Variable for with parameter should be extracted. Put in "".
+#' @param parameter "b" = coefficient, "p" = p-value
+#'
+#' @return "b = ..." or "p = ..."
+#'
+#' @author Dominik Vogel
+#'
+#' @examples
+#' model <- nlme::lme(mpg ~ cyl, random = ~1|am, data = mtcars)
+#' extract_hlm(model, "cyl", "b")
+#'
+#' @export
 extract_hlm <- function(model, var, parameter) {
   #* Establish a new 'ArgCheck' object
   Check <- ArgumentCheck::newArgCheck()
@@ -48,7 +64,24 @@ extract_hlm <- function(model, var, parameter) {
 
 
 
-# stats::lme
+
+#' Extract parameters from stats::lm-models
+#'
+#' @description Function extracts coefficients and p-values from stats::lm-models
+#'
+#' @param model The stats::lm-model (must be build in advance)
+#' @param var Name of Variable for with parameter should be extracted. Put in "".
+#' @param parameter "b" = coefficient, "p" = p-value
+#'
+#' @return returns "b = ..." or "p = ..."
+#'
+#' @author Dominik Vogel
+#'
+#' @examples
+#' model <- stats::lm(mpg ~ cyl + am, data = mtcars)
+#' extract_lm(model, "cyl", "p")
+#'
+#' @export
 extract_lm <- function(model, var, parameter) {
   #* Establish a new 'ArgCheck' object
   Check <- ArgumentCheck::newArgCheck()
