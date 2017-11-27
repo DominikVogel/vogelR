@@ -127,3 +127,25 @@ extract_lm <- function(model, var, parameter) {
 }
 
 
+#' Extract Cronbach's Alpha
+#'
+#' @description Function to perform a Cronbach's Alpha analysis and
+#' to extract the Alpha value
+#'
+#' @param vars Variables to include in the analysis
+#' @param data Data frame to select variables from
+#'
+#' @return Alpha value
+#'
+#' @author Dominik Vogel
+#'
+#' @examples
+#' extract_alpha(vars = c("cyl", "hp", "wt"), data = mtcars)
+#'
+#' @export
+extract_alpha <- function(vars, data) {
+  M1 <- dplyr::select(data, vars)
+  alpha <- suppressWarnings(psych::alpha(M1, warnings = FALSE))
+  alpha <- broman::myround(alpha$total$raw_alpha, digits = 2)
+  return(alpha)
+}

@@ -20,7 +20,8 @@ Imports:
     stats,
     tibble,
     nlme,
-    dplyr
+    dplyr,
+    psych
 Suggests: 
 Remotes:
   hadley/pillar,
