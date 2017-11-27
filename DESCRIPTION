@@ -19,8 +19,9 @@ Imports:
     skimr,
     stats,
     tibble,
-    nlme
-Suggests:
+    nlme,
+    dplyr
+Suggests: 
 Remotes:
   hadley/pillar,
   ropenscilabs/skimr
