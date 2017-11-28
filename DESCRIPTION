@@ -22,7 +22,9 @@ Imports:
     nlme,
     dplyr,
     psych
-Suggests: 
+Suggests: ,
+    xtable,
+    Hmisc
 Remotes:
   hadley/pillar,
   ropenscilabs/skimr
