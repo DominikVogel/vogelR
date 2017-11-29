@@ -2,6 +2,7 @@
 
 export(anova_results)
 export(chi_results)
+export(corstars)
 export(extract_alpha)
 export(extract_hlm)
 export(extract_lm)

@@ -20,8 +20,9 @@
 #'
 #'
 #' @examples
-#' corstars(mtcars, method="pearson", removeTriangle="upper", result="html",
-#'    caption = "Correlations", filename = "corr.html",
+#' # Console output
+#' corstars(mtcars, method="pearson", removeTriangle="upper", result="none",
+#'    caption = "Correlations",
 #'    sig.level = 0.1,
 #'    labels_rows = c("(1) mpg", "(2) cyl", "(3) disp", "(4) hp",
 #'                    "(5) drat", "(6) wt", "(7) qsec", "(8) vs",
@@ -29,6 +30,7 @@
 #'                    "(11) carb"),
 #'    labels_cols = 1:10)
 #'
+#' # HTML output
 #' corstars(mtcars, method="pearson", removeTriangle="upper", result="html",
 #'    caption = "Correlations", filename = "corr.html",
 #'    sig.level = 0.1,
