@@ -13,6 +13,6 @@
 #'
 #' @export
 lime_names <- function(df) {
-  df <- stats::setNames(gsub(".*\\[(.+)\\]", "\\1", names(df)), df)
+  df <- stats::setNames(df, gsub(".*\\[(.+)\\]", "\\1", names(df)))
   return(df)
 }
